@@ -31,6 +31,7 @@ Azure CTF rooms will mainly be covering the following cybersecurity topics:
     * [ ] nmap
     * [ ] nikto
 1. Web Application Analysis
+    * [ ] gobuster
     * [ ] sqlmap
     * [ ] burpsuite
 1. Database Assessment
@@ -38,10 +39,14 @@ Azure CTF rooms will mainly be covering the following cybersecurity topics:
 1. Password Attacks
     * [ ] hashcat
     * [ ] john the ripper
+    * [ ] hydra
 1. Exploitation 
     * [ ] metasploit
     * [ ] sqlmap
 1. Sniffing & Spoofing
     * [ ] wireshark
 1. Post Exploitation
+    * Enumeration
+        * [ ] Powerview
+        * [ ] SharpHound\Bloodhound
     * [ ] mimikatz

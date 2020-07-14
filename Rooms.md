@@ -1,5 +1,7 @@
 # CTF Room Categories
 
+1. Pentesting Fundamentals
+
 1. Information Gathering
     * Network & Port Scanners
         * [ ] nmap
@@ -11,6 +13,7 @@
     * [ ] nmap
     * [ ] nikto
 1. Web Application Analysis
+    * [ ] gobuster
     * [ ] sqlmap
     * [ ] burpsuite
 1. Database Assessment
