@@ -61,15 +61,17 @@
 1. Windows PrivEsc
 1. Linux PrivEsc
 1. Hydra
-1. DogCat
 1. Local File Inclusion (LFI)
 1. The Cod Caper
-1. Anthem
 1. Attaktive Directory
 1. EternalBlue
-1. Agent Sudo
 1. Wgel
 1. Vulnversity
 1. OhSINT
-1. PickleRick
 1. Post-Exploitation
+
+Challenges 
+1. DogCat (docker)
+1. Anthem (win)
+1. Agent Sudo
+1. Pickle Rick
