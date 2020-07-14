@@ -40,3 +40,36 @@
     * [ ] maltego
 1. Social Engineering
     * [ ] social engineering toolkit
+
+## ROOMS
+1. Welcome
+    * What are rooms?
+    * Hackable machines
+1. Learn Linux
+1. Pentesting Crash Course
+    * nmap
+    * netcat
+    * gobuster
+    * nikto
+    * metasploit
+    * hashcat
+    * john the ripper
+    * sqlmap
+    * smbmap
+    * smbclient
+    * impacket
+1. Windows PrivEsc
+1. Linux PrivEsc
+1. Hydra
+1. DogCat
+1. Local File Inclusion (LFI)
+1. The Cod Caper
+1. Anthem
+1. Attaktive Directory
+1. EternalBlue
+1. Agent Sudo
+1. Wgel
+1. Vulnversity
+1. OhSINT
+1. PickleRick
+1. Post-Exploitation
