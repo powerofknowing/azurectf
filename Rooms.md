@@ -29,6 +29,7 @@
 1. Exploitation 
     * [ ] metasploit
     * [ ] sqlmap
+    * [ ] Reverse Shell
 1. Sniffing & Spoofing
     * [] wireshark
 1. Post Exploitation
@@ -42,36 +43,25 @@
     * [ ] social engineering toolkit
 
 ## ROOMS
-1. Welcome
-    * What are rooms?
-    * Hackable machines
-1. Learn Linux
-1. Pentesting Crash Course
-    * nmap
-    * netcat
-    * gobuster
-    * nikto
-    * metasploit
-    * hashcat
-    * john the ripper
-    * sqlmap
-    * smbmap
-    * smbclient
-    * impacket
+1. Pentesting Fundamentals
 1. Windows PrivEsc
 1. Linux PrivEsc
-1. Hydra
-1. Local File Inclusion (LFI)
-1. The Cod Caper
-1. Attaktive Directory
+1. Active Directory
 1. EternalBlue
-1. Wgel
+1. Hydra
+1. Burp
+1. OWASP
+1. Local File Inclusion (LFI)
+1. The Cod Caper (linux)
 1. Vulnversity
-1. OhSINT
 1. Post-Exploitation
+1. UltraTech
+
 
 Challenges 
 1. DogCat (docker)
 1. Anthem (win)
 1. Agent Sudo
 1. Pickle Rick
+1. Wgel
+1. OhSINT
