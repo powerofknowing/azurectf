@@ -1,24 +1,24 @@
 # ROOM-01 Windows Privilege Escalation 
 
 ## Windows PrivEsc
-* Registry Escalation
-    * Autorun
-    * AlwaysInstallElevated
-* Service Escalation
-    * Registry
-    * Executable Files
-    * DLL Hijacking
-    * binPath
-    * Unquoted Service Paths
-    * Hot Potato
-* Privilege Escalation
-    * Startup Applications
-    * Kernel Exploits
-* Password Mining Escalation
-    * Configuration Files
-    * Memory
 
-## Reverse Shell Executable
+* Service Exploits
+    * SE01 - [Insecure Service Permissions](#SE01---Insecure-Service-Permissions)
+    * SE02 - [Unquoted Service Path](#SE02---Unquoted-Service-Path)
+    * SE03 - [Weak Registry Permissions](#SE03---Weak-Registry-Permissions)
+    * SE04 - [Insecure Service Executables](#SE04---Insecure-Service-Executables)
+* Registry Exploits
+    * RE01 - AutoRuns
+    * RE02 - AlwaysInstallElevated
+* Password Exploits
+    * PE01 - Registry
+    * PE02 - Saved Credentials
+    * PE03 - Security Account Manager
+    * PE04 - Pass The Hash
+* Scheduled Tasks
+
+
+## Pre-req: Reverse Shell Executable
 
 On **Kali**, generate a reverse shell executable (reverse.exe) using msfvenom. Update the LHOST IP address accordingly:
 
@@ -57,6 +57,7 @@ The reverse.exe executable will be used in many of the tasks in this room, so do
 ## **Service Exploits**
 
 ### **SE01 - Insecure Service Permissions**
+
 On victim machine:\
 Use **accesschk.exe** to check the "user" account's permissions on the "daclsvc" service:
 ```
@@ -243,3 +244,17 @@ Start a listener on Kali and then append a line to the C:\DevTools\CleanUp.ps1 w
 echo C:\PrivEsc\reverse.exe >> C:\DevTools\CleanUp.ps1
 ```
 Wait for the Scheduled Task to run, which should trigger the reverse shell as SYSTEM.
+
+## Title
+
+### Place 1
+
+Hello, this is some text to fill in this, [here](#place-2), is a link to the second place.
+
+### Place 2
+
+Place one has the fun times of linking here, but I can also link back [here](#place-1).
+
+### Place's 3: other example
+
+Place one has the fun times of linking here, but I can also link back [here](#places-3-other-example).
