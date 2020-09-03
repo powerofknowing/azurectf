@@ -3,10 +3,10 @@
 ## Windows PrivEsc
 
 * Service Exploits
-    * SE01 - [Insecure Service Permissions](#SE01---Insecure-Service-Permissions)
-    * SE02 - [Unquoted Service Path](#SE02---Unquoted-Service-Path)
-    * SE03 - [Weak Registry Permissions](#SE03---Weak-Registry-Permissions)
-    * SE04 - [Insecure Service Executables](#SE04---Insecure-Service-Executables)
+    * SE01 - [Insecure Service Permissions](#se01---insecure-service-permissions)
+    * SE02 - [Unquoted Service Path](#se02---unquoted-service-path)
+    * SE03 - [Weak Registry Permissions](#se03---weak-registry-permissions)
+    * SE04 - [Insecure Service Executables](#se04---insecure-service-executables)
 * Registry Exploits
     * RE01 - AutoRuns
     * RE02 - AlwaysInstallElevated
