@@ -15,7 +15,13 @@
     * PE02 - [Saved Credentials](#pe02---saved-credentials)
     * PE03 - [Security Account Manager](#pe03---security-account-manager)
     * PE04 - [Pass The Hash](#pe04---pass-the-hash)
-* Scheduled Tasks
+* [Scheduled Tasks](#scheduled-tasks)
+* [Insecure GUI Apps](#insecure-gui-apps)
+* [Startup Apps](#startup-apps)
+* Token Impersonation
+    * TI01 - [Rogue Potato](#rogue-potato)
+    * TI02 - [PrintSpoofer](#printspoofer)
+* [Privilege Escalation Scripts](#privilege-escalation-scripts)
 
 
 ## Pre-req: Reverse Shell Executable
